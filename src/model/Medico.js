@@ -45,6 +45,10 @@ const medicoScheme = mongoose.Schema({
     descricao:{
         type: String
     },
+    img:{
+        type: String,
+        required: true
+    }
 });
 
 

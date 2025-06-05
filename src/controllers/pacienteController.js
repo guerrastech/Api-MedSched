@@ -15,6 +15,21 @@ exports.cadastrarPaciente = async (req, res) => {
   }
 };
 
+exports.getPacientebyId = async (req, res) => {
+    try{
+        const {id} = req.params;
+        const paciente = await Paciente.findById(id); 
+
+        if (!paciente) {
+            return res.status(404).json({ error: "Nenhum paciente encontrado" });
+        }
+
+        res.status(200).json(paciente);
+    }catch (erro){
+        console.error(erro);
+        res.status(500).json({ erro: 'Erro ao procurar paciente' });
+    }
+};
 
 exports.atualizarPaciente = async (req, res) => {
   try {

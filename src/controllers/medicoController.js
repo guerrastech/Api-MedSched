@@ -1,8 +1,13 @@
 const Medico = require('../model/Medico');
+const bcrypt = require('bcryptjs');
+
 
 exports.cadastrarMedico = async (req, res) => {
   try {
-    const novoMedico = await Medico.create(req.body);
+    const dados = req.body;
+    dados.password = await bcrypt.hash(dados.password, 10);
+
+    const novoMedico = await Medico.create(dados);
     res.status(201).json(novoMedico);
   } catch (err) {
     console.error(err);

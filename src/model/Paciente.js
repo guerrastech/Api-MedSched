@@ -33,6 +33,11 @@ const pacienteScheme = mongoose.Schema({
         required: true,
         select: false
     },
+    img: {
+        type: String,
+        required: true,
+    },
+
 });
 
 
