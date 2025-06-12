@@ -4,6 +4,7 @@
   "description": "api feita para o projeto sysmed, co o intuito de ajudar na organização dos hospitais da cidade de Tacaratu-PE",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Grupo Sysmed",

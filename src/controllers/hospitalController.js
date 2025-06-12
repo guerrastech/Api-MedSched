@@ -71,3 +71,21 @@ exports.listarHospitalPorId = async (req, res) => {
     res.status(500).json({ erro: "Erro ao buscar hospital" });
   }
 };
+
+exports.listarHospitaisPorEspecialidade = async (req, res) => {
+  try {
+    const especialidade = req.params.especialidade;
+
+    if (!especialidade) {
+      return res.status(400).json({ erro: "Informe a especialidade para busca" });
+    }
+
+    
+    const hospitais = await Hospital.find({ especialidades: especialidade });
+
+    res.json(hospitais);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ erro: "Erro ao buscar hospitais por especialidade" });
+  }
+};

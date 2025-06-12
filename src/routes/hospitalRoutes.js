@@ -7,5 +7,7 @@ router.delete("/deletar/:id", hospitalController.deletarHospital);
 router.put("/atualizar/:id", hospitalController.atualizarHospital);
 router.get("/listarHospitais", hospitalController.listarHospitais);
 router.get("/listarPorId/:id", hospitalController.listarHospitalPorId);
+router.get('/especialidades/:especialidade', hospitalController.listarHospitaisPorEspecialidade);
+
 
 module.exports = router;

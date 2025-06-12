@@ -5,7 +5,7 @@ const authMiddleware = require('../middlewares/authMiddleware');
 
 router.post('/cadastrar', controller.cadastrarMedico);
 router.put('/atualizarMedico/:id', controller.atualizarMedico);
-router.get('/getById/:id', authMiddleware, controller.getMedicobyId);
+router.get('/getById/:id', controller.getMedicobyId);
 router.get('/listarMedicos', controller.listarMedicos);
 router.delete('/excluirMedico/:id', controller.excluirMedico);
 router.get('/especialistas/:especialidade', controller.buscarPorEspecialidade);

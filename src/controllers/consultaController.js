@@ -2,7 +2,7 @@ const Consulta = require("../model/Consulta");
 
 exports.marcarConsulta = async (req, res) => {
   try {
-    const { paciente, medico, hospital, date, horario, documento } = req.body;
+    const { paciente, medico, hospital, date, horario, documento,status,diagnostico,encamiamento,observacoes } = req.body;
 
     if (!paciente || !medico || !hospital || !date || !horario) {
       return res.status(400).json({ erro: "Campos paciente, médico, hospital, data e horário são obrigatórios" });
@@ -14,7 +14,12 @@ exports.marcarConsulta = async (req, res) => {
       hospital,
       date: new Date(date),
       horario,
-      documento
+      documento,
+      status,
+      diagnostico,
+      encamiamento,
+      observacoes
+
     });
 
     await novaConsulta.save();
@@ -109,4 +114,24 @@ exports.cancelarConsulta = async (req, res) => {
     res.status(500).json({ erro: "Erro ao cancelar consulta" });
   }
 };
+
+exports.getConsultaById = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const consulta = await Consulta.findById(id)
+      .populate("medico")
+      .populate("hospital");
+
+    if (!consulta) {
+      return res.status(404).json({ mensagem: "Consulta não encontrada" });
+    }
+
+    res.json(consulta);
+  } catch (error) {
+    console.error("Erro ao buscar consulta por ID:", error);
+    res.status(500).json({ mensagem: "Erro ao buscar consulta" });
+  }
+};
+
 

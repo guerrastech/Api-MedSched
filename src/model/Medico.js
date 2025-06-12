@@ -16,7 +16,7 @@ const medicoScheme = mongoose.Schema({
     },
     especialidade:{
         type: String,
-        enum: ["Dentista", 'Ortoprdia', 'Clinico Geral', 'Oftalmologista', 'Dermatologista', 'Ginecologista'],
+        enum: ["Odontologia", 'Ortoprdia', 'Clinico Geral', 'Oftalmologista', 'Dermatologista', 'Ginecologista'],
         required: true
     },
     CRM:{

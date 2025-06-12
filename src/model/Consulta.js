@@ -8,7 +8,11 @@ const consultaScheme = mongoose.Schema({
     date: {type: Date, required: true},
     horario: {type: String, required: true},
     documento: {type: String},
-    criadoEm: { type: Date, default: Date.now }
+    criadoEm: { type: Date, default: Date.now },
+    status:{type: String},
+    diagnostico:{type: String},
+    encamiamento:{type: String},
+    observacoes:[{type: String}],
 });
 
 const Consulta = mongoose.model("Consulta",consultaScheme);
